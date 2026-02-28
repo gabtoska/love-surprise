@@ -1,0 +1,246 @@
+.penguinContainer {
+  margin-bottom: 2rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.penguin {
+  width: 180px;
+  height: 220px;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* Penguin body */
+.penguinBody {
+  width: 140px;
+  height: 160px;
+  background: linear-gradient(to right, #1a1a2e 0%, #2d2d44 50%, #1a1a2e 100%);
+  border-radius: 70px 70px 60px 60px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* Penguin belly */
+.penguinBelly {
+  width: 100px;
+  height: 120px;
+  background: linear-gradient(to bottom, #ffffff 0%, #f8f8f8 100%);
+  border-radius: 50px 50px 45px 45px;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Penguin face */
+.penguinFace {
+  width: 110px;
+  height: 100px;
+  background: linear-gradient(to right, #1a1a2e 0%, #2d2d44 50%, #1a1a2e 100%);
+  border-radius: 55px 55px 50px 50px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* Face white patch */
+.facePatch {
+  width: 80px;
+  height: 65px;
+  background: #ffffff;
+  border-radius: 40px 40px 35px 35px;
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Eyes */
+.penguinEyes {
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 25px;
+}
+
+.eye {
+  width: 22px;
+  height: 28px;
+  background: #1a1a2e;
+  border-radius: 50%;
+  position: relative;
+}
+
+.eyeShine {
+  width: 8px;
+  height: 10px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  left: 4px;
+}
+
+/* Blushing cheeks */
+.cheeks {
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 60px;
+}
+
+.cheek {
+  width: 18px;
+  height: 12px;
+  background: #ffb3ba;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+/* Beak */
+.penguinBeak {
+  width: 20px;
+  height: 15px;
+  background: linear-gradient(to bottom, #ff9a4a, #ff7b2b);
+  border-radius: 50% 50% 50% 50% / 30% 30% 70% 70%;
+  position: absolute;
+  top: 65px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Flippers */
+.flipper {
+  width: 30px;
+  height: 70px;
+  background: linear-gradient(to right, #1a1a2e, #2d2d44);
+  border-radius: 15px 15px 25px 25px;
+  position: absolute;
+  top: 110px;
+}
+
+.flipperLeft {
+  left: 0;
+  transform-origin: top center;
+}
+
+.flipperRight {
+  right: 0;
+  transform-origin: top center;
+}
+
+/* Feet */
+.feet {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 30px;
+}
+
+.foot {
+  width: 35px;
+  height: 15px;
+  background: linear-gradient(to bottom, #ff9a4a, #ff7b2b);
+  border-radius: 50% 50% 40% 40%;
+}
+
+/* Heart held */
+.heartHeld {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  z-index: 10;
+}
+
+/* Sad state */
+.sad .cheek {
+  background: #a8d8ea !important;
+}
+
+@media (max-width: 768px) {
+  .penguin {
+    width: 150px;
+    height: 180px;
+  }
+
+  .penguinBody {
+    width: 115px;
+    height: 130px;
+  }
+
+  .penguinBelly {
+    width: 82px;
+    height: 98px;
+  }
+
+  .penguinFace {
+    width: 90px;
+    height: 82px;
+  }
+
+  .facePatch {
+    width: 65px;
+    height: 53px;
+    top: 20px;
+  }
+
+  .penguinEyes {
+    top: 28px;
+    gap: 20px;
+  }
+
+  .eye {
+    width: 18px;
+    height: 23px;
+  }
+
+  .cheeks {
+    top: 45px;
+    gap: 49px;
+  }
+
+  .cheek {
+    width: 15px;
+    height: 10px;
+  }
+
+  .penguinBeak {
+    width: 16px;
+    height: 12px;
+    top: 53px;
+  }
+
+  .flipper {
+    width: 25px;
+    height: 57px;
+    top: 90px;
+  }
+
+  .feet {
+    gap: 25px;
+  }
+
+  .foot {
+    width: 29px;
+    height: 12px;
+  }
+
+  .heartHeld {
+    top: 98px;
+    font-size: 1.6rem;
+  }
+}

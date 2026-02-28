@@ -1,0 +1,289 @@
+.birdContainer {
+  margin-bottom: 2rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.bird {
+  width: 180px;
+  height: 220px;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* Crest/Feathers on head */
+.crest {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  z-index: 3;
+}
+
+.feather {
+  width: 8px;
+  height: 25px;
+  background: linear-gradient(to top, #ffcc00, #ff9900);
+  border-radius: 5px 5px 3px 3px;
+}
+
+.feather:first-child {
+  transform: rotate(-20deg);
+  height: 20px;
+}
+
+.feather:last-child {
+  transform: rotate(20deg);
+  height: 20px;
+}
+
+/* Head */
+.birdHead {
+  width: 100px;
+  height: 90px;
+  background: linear-gradient(135deg, #87ceeb 0%, #5dade2 50%, #87ceeb 100%);
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* Eyes */
+.birdEyes {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 25px;
+}
+
+.eye {
+  width: 22px;
+  height: 24px;
+  background: #1a1a2e;
+  border-radius: 50%;
+  position: relative;
+}
+
+.eyeShine {
+  width: 7px;
+  height: 9px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+
+/* Cheeks */
+.cheeks {
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 50px;
+}
+
+.cheek {
+  width: 16px;
+  height: 12px;
+  background: #ffb3ba;
+  border-radius: 50%;
+  opacity: 0.8;
+}
+
+/* Beak */
+.beak {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.beakTop {
+  width: 20px;
+  height: 12px;
+  background: linear-gradient(to bottom, #ffa500, #ff8c00);
+  border-radius: 50% 50% 0 0;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  position: relative;
+  z-index: 1;
+}
+
+.beakBottom {
+  width: 16px;
+  height: 8px;
+  background: linear-gradient(to bottom, #ff8c00, #ff7700);
+  border-radius: 0 0 50% 50%;
+  margin: -2px auto 0;
+}
+
+/* Body */
+.birdBody {
+  width: 90px;
+  height: 100px;
+  background: linear-gradient(135deg, #87ceeb 0%, #5dade2 50%, #87ceeb 100%);
+  border-radius: 45px 45px 40px 40px;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.belly {
+  width: 60px;
+  height: 70px;
+  background: linear-gradient(to bottom, #fff8f0 0%, #ffe8d0 100%);
+  border-radius: 30px 30px 28px 28px;
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Wings */
+.wing {
+  width: 40px;
+  height: 60px;
+  background: linear-gradient(135deg, #5dade2 0%, #3498db 100%);
+  border-radius: 20px 20px 30px 30px;
+  position: absolute;
+  top: 90px;
+  z-index: 0;
+}
+
+.wingLeft {
+  left: 5px;
+  transform-origin: top right;
+}
+
+.wingRight {
+  right: 5px;
+  transform-origin: top left;
+}
+
+/* Feet */
+.feet {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 25px;
+}
+
+.foot {
+  display: flex;
+  gap: 3px;
+}
+
+.toe {
+  width: 6px;
+  height: 18px;
+  background: #ffa500;
+  border-radius: 3px;
+}
+
+.foot:first-child .toe:first-child {
+  transform: rotate(-15deg);
+}
+
+.foot:first-child .toe:last-child {
+  transform: rotate(15deg);
+}
+
+.foot:last-child .toe:first-child {
+  transform: rotate(-15deg);
+}
+
+.foot:last-child .toe:last-child {
+  transform: rotate(15deg);
+}
+
+/* Tail feathers */
+.tailFeathers {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 3px;
+  z-index: 0;
+}
+
+.tailFeather {
+  width: 12px;
+  height: 30px;
+  background: linear-gradient(to bottom, #5dade2, #3498db);
+  border-radius: 6px 6px 10px 10px;
+  transform-origin: top center;
+}
+
+.tailFeather:first-child {
+  transform: rotate(-15deg);
+}
+
+.tailFeather:last-child {
+  transform: rotate(15deg);
+}
+
+/* Heart held */
+.heartHeld {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  z-index: 10;
+}
+
+/* Sad state */
+.sad .cheek {
+  background: #a8d8ea !important;
+}
+
+@media (max-width: 768px) {
+  .bird {
+    width: 150px;
+    height: 180px;
+  }
+
+  .birdHead {
+    width: 83px;
+    height: 75px;
+    top: 12px;
+  }
+
+  .birdBody {
+    width: 75px;
+    height: 83px;
+  }
+
+  .wing {
+    width: 33px;
+    height: 50px;
+    top: 75px;
+  }
+
+  .heartHeld {
+    top: 83px;
+    font-size: 1.6rem;
+  }
+
+  .feather {
+    width: 6px;
+    height: 20px;
+  }
+
+  .feather:first-child,
+  .feather:last-child {
+    height: 16px;
+  }
+}

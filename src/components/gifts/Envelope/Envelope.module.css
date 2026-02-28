@@ -1,0 +1,396 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.5s ease;
+}
+
+.envelope {
+  position: relative;
+  width: 360px;
+  height: 240px;
+  cursor: pointer;
+  perspective: 1000px;
+}
+
+.envelope.open {
+  animation: none;
+}
+
+/* Side hearts */
+.sideHeart {
+  position: absolute;
+  font-size: 1.6rem;
+  left: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  animation: rotateSide 3s ease-in-out infinite;
+}
+
+.sideHeartRight {
+  position: absolute;
+  font-size: 1.6rem;
+  right: -30px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  animation: rotateSide 3s ease-in-out infinite;
+}
+
+@keyframes rotateSide {
+  0%, 100% { transform: translateY(-50%) rotate(0deg); }
+  50% { transform: translateY(-50%) rotate(5deg); }
+}
+
+/* Envelope back */
+.envelopeBack {
+  position: absolute;
+  width: 360px;
+  height: 220px;
+  background: linear-gradient(to bottom, #f5e6d3 0%, #ede4ce 100%);
+  border-radius: 4px 4px 12px 12px;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.5),
+              0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  animation: goldShimmer 4s ease-in-out infinite;
+}
+
+@keyframes goldShimmer {
+  0%, 100% {
+    box-shadow: 0 0 0px rgba(211, 175, 110, 0),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5),
+                0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(211, 175, 110, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5),
+                0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.envelopeBack::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  border: 2px solid rgba(211, 175, 110, 0.25);
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Layer accent */
+.layerAccent {
+  position: absolute;
+  width: 90%;
+  height: 3px;
+  top: 100px;
+  left: 5%;
+  z-index: 3;
+  border-radius: 2px;
+}
+
+.centerHeart {
+  position: absolute;
+  font-size: 2.5rem;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+/* Wax seal */
+.waxSeal {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  box-shadow: 0 8px 20px rgba(139, 21, 82, 0.4),
+              inset -3px -3px 6px rgba(0, 0, 0, 0.2),
+              inset 3px 3px 6px rgba(255, 255, 255, 0.15),
+              0 0 0 2px rgba(211, 175, 110, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Envelope flap */
+.envelopeFlap {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 180px solid transparent;
+  border-right: 180px solid transparent;
+  border-top: 120px solid #d32f5e;
+  top: 0;
+  left: 0;
+  transform-origin: top center;
+  z-index: 5;
+  filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.2));
+}
+
+/* Letter */
+.letter {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 500;
+  width: 100%;
+  max-width: 650px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 50px 60px;
+  border-radius: 5px;
+  background: linear-gradient(180deg, #fffdf8 0%, #fff9f0 30%, #fff5ec 100%);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35),
+              0 0 0 1px rgba(200, 170, 130, 0.3);
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: #ff758c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(255, 117, 140, 0.5);
+}
+
+.closeButton:hover {
+  transform: scale(1.15) rotate(90deg);
+  box-shadow: 0 8px 25px rgba(255, 117, 140, 0.7);
+  background: #ff6b80;
+}
+
+.letterHeader {
+  text-align: center;
+  margin-bottom: 25px;
+  padding: 20px 0;
+}
+
+.letterHeader h1 {
+  font-size: 2.6rem;
+  margin: 0;
+  font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 4px rgba(201, 24, 90, 0.1);
+}
+
+.hearts {
+  font-size: 1.8rem;
+  margin-top: 12px;
+  letter-spacing: 12px;
+}
+
+.letterContent {
+  font-size: 1.1rem;
+  line-height: 2;
+  text-align: center;
+  padding: 20px 0;
+  color: #5a4a3a;
+}
+
+.letterTo {
+  font-weight: 600;
+  margin-bottom: 25px;
+  font-size: 1.3rem;
+  font-style: italic;
+  letter-spacing: 1px;
+}
+
+.letterBody {
+  margin: 20px 0 25px;
+  font-style: italic;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-align: center;
+  font-family: 'Georgia', serif;
+  padding: 20px 15px;
+  line-height: 1.6;
+  border-radius: 8px;
+}
+
+.invitationDetails {
+  text-align: center;
+  margin: 25px 0;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.venueName {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  font-family: 'Georgia', serif;
+  letter-spacing: 3px;
+}
+
+.detailLine {
+  padding: 8px 0;
+  font-size: 1.15rem;
+  color: #5a4a3a;
+}
+
+.label {
+  color: #8a7a6a;
+  font-weight: 400;
+  margin-right: 8px;
+}
+
+.value {
+  font-weight: 700;
+}
+
+.letterFrom {
+  text-align: center;
+  margin-top: 25px;
+  color: #8a7a6a;
+  font-size: 1.1rem;
+  font-style: italic;
+  letter-spacing: 1px;
+  padding-top: 20px;
+}
+
+.name {
+  display: block;
+  margin-top: 12px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  font-style: normal;
+  font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+}
+
+.tapHint {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 1rem;
+  animation: pulse 1.5s ease-in-out infinite;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; transform: translateX(-50%) scale(1.05); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .envelope {
+    width: 280px;
+    height: 185px;
+  }
+
+  .envelopeBack {
+    width: 280px;
+    height: 165px;
+  }
+
+  .waxSeal {
+    width: 65px;
+    height: 65px;
+    top: 60px;
+    font-size: 1.5rem;
+  }
+
+  .envelopeFlap {
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-top: 95px solid #d32f5e;
+  }
+
+  .letter {
+    padding: 30px 20px;
+    max-width: 95vw;
+    max-height: 85vh;
+  }
+
+  .letterHeader h1 {
+    font-size: 1.8rem;
+  }
+
+  .hearts {
+    font-size: 1.3rem;
+    letter-spacing: 5px;
+  }
+
+  .letterBody {
+    font-size: 1.2rem;
+    padding: 15px 10px;
+  }
+
+  .closeButton {
+    width: 45px;
+    height: 45px;
+    font-size: 1.8rem;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 430px) {
+  .envelope {
+    width: 260px;
+    height: 170px;
+  }
+
+  .envelopeBack {
+    width: 260px;
+    height: 150px;
+  }
+
+  .waxSeal {
+    width: 60px;
+    height: 60px;
+    top: 50px;
+  }
+
+  .envelopeFlap {
+    border-left: 130px solid transparent;
+    border-right: 130px solid transparent;
+    border-top: 85px solid #d32f5e;
+  }
+
+  .letter {
+    padding: 25px 15px;
+  }
+
+  .letterHeader h1 {
+    font-size: 1.5rem;
+  }
+}

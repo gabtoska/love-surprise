@@ -1,0 +1,254 @@
+.dogContainer {
+  margin-bottom: 2rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.dog {
+  width: 180px;
+  height: 220px;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* Ears */
+.ear {
+  width: 45px;
+  height: 50px;
+  background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+  border-radius: 20px 20px 30px 30px;
+  position: absolute;
+  top: 5px;
+  z-index: 1;
+}
+
+.earLeft {
+  left: 15px;
+  transform: rotate(-15deg);
+  transform-origin: top center;
+}
+
+.earRight {
+  right: 15px;
+  transform: rotate(15deg);
+  transform-origin: top center;
+}
+
+/* Head */
+.dogHead {
+  width: 130px;
+  height: 110px;
+  background: linear-gradient(135deg, #deb887 0%, #d2b48c 50%, #deb887 100%);
+  border-radius: 50% 50% 45% 45%;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* Eyes */
+.dogEyes {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 35px;
+}
+
+.eye {
+  width: 26px;
+  height: 28px;
+  background: #1a1a2e;
+  border-radius: 50%;
+  position: relative;
+}
+
+.eyeShine {
+  width: 8px;
+  height: 10px;
+  background: #ffffff;
+  border-radius: 50%;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+/* Cheeks */
+.cheeks {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 65px;
+}
+
+.cheek {
+  width: 22px;
+  height: 15px;
+  background: #ffb3ba;
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+/* Snout */
+.snout {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 35px;
+  background: linear-gradient(to bottom, #f5deb3, #ffe4c4);
+  border-radius: 50%;
+}
+
+.nose {
+  width: 18px;
+  height: 14px;
+  background: #2d1810;
+  border-radius: 50% 50% 40% 40%;
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.nose::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+}
+
+.tongue {
+  width: 12px;
+  height: 10px;
+  background: #ff6b8a;
+  border-radius: 0 0 50% 50%;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Body */
+.dogBody {
+  width: 110px;
+  height: 110px;
+  background: linear-gradient(135deg, #deb887 0%, #d2b48c 50%, #deb887 100%);
+  border-radius: 55px 55px 45px 45px;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.bodySpot {
+  width: 35px;
+  height: 30px;
+  background: #a0522d;
+  border-radius: 50%;
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+
+.belly {
+  width: 70px;
+  height: 75px;
+  background: linear-gradient(to bottom, #fff8f0 0%, #ffe8d0 100%);
+  border-radius: 35px 35px 30px 30px;
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Paws */
+.paws {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 35px;
+}
+
+.paw {
+  width: 30px;
+  height: 20px;
+  background: linear-gradient(135deg, #deb887 0%, #d2b48c 100%);
+  border-radius: 50%;
+}
+
+/* Tail */
+.tail {
+  width: 18px;
+  height: 50px;
+  background: linear-gradient(to top, #deb887, #d2b48c);
+  border-radius: 10px 10px 20px 20px;
+  position: absolute;
+  bottom: 35px;
+  right: 0;
+  transform-origin: bottom center;
+  z-index: 0;
+}
+
+/* Heart held */
+.heartHeld {
+  position: absolute;
+  top: 115px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2rem;
+  z-index: 10;
+}
+
+/* Sad state */
+.sad .cheek {
+  background: #a8d8ea !important;
+}
+
+@media (max-width: 768px) {
+  .dog {
+    width: 150px;
+    height: 180px;
+  }
+
+  .dogHead {
+    width: 108px;
+    height: 92px;
+    top: 17px;
+  }
+
+  .dogBody {
+    width: 92px;
+    height: 92px;
+  }
+
+  .ear {
+    width: 37px;
+    height: 42px;
+  }
+
+  .earLeft {
+    left: 12px;
+  }
+
+  .earRight {
+    right: 12px;
+  }
+
+  .heartHeld {
+    top: 95px;
+    font-size: 1.6rem;
+  }
+}

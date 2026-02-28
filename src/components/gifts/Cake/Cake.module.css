@@ -1,0 +1,341 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cakeWrapper {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cake {
+  position: relative;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Candles */
+.candles {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 5px;
+  z-index: 10;
+}
+
+.candle {
+  width: 8px;
+  height: 40px;
+  background: linear-gradient(to right, #fff8dc, #fffacd);
+  border-radius: 2px;
+  position: relative;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.flame {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 20px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  box-shadow: 0 0 10px rgba(255, 200, 100, 0.8),
+              0 0 20px rgba(255, 150, 50, 0.5);
+}
+
+/* Layers */
+.layer {
+  width: 120px;
+  height: 40px;
+  border-radius: 10px 10px 5px 5px;
+  position: relative;
+  z-index: 3;
+}
+
+.frosting {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  border-bottom: 15px solid;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.1));
+}
+
+.frosting::before,
+.frosting::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  width: 20px;
+  height: 10px;
+  border-radius: 50%;
+  background: inherit;
+  border-color: inherit;
+}
+
+.frosting::before {
+  left: 10px;
+}
+
+.frosting::after {
+  right: 10px;
+}
+
+.sprinkles {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 15px;
+}
+
+.sprinkle {
+  width: 8px;
+  height: 4px;
+  border-radius: 2px;
+  transform: rotate(var(--rotate, 0deg));
+}
+
+.sprinkle:nth-child(1) { --rotate: 45deg; }
+.sprinkle:nth-child(2) { --rotate: -30deg; }
+.sprinkle:nth-child(3) { --rotate: 60deg; }
+.sprinkle:nth-child(4) { --rotate: -45deg; }
+
+.layerMiddle {
+  width: 150px;
+  height: 45px;
+  border-radius: 5px;
+  position: relative;
+  z-index: 2;
+  margin-top: 5px;
+}
+
+.frostingMiddle {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  border-bottom: 12px solid;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+
+.layerBottom {
+  width: 180px;
+  height: 50px;
+  border-radius: 5px 5px 10px 10px;
+  position: relative;
+  z-index: 1;
+  margin-top: 5px;
+}
+
+.frostingBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  border-radius: 0 0 10px 10px;
+}
+
+/* Plate */
+.plate {
+  width: 220px;
+  height: 20px;
+  background: linear-gradient(to bottom, #f5f5f5, #e0e0e0);
+  border-radius: 50%;
+  margin-top: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.tapHint {
+  margin-top: 30px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Card */
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 50px 40px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, #fffdf8 0%, #fff9f0 30%, #fff5ec 100%);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #ff758c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 1.8rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 117, 140, 0.5);
+}
+
+.closeButton:hover {
+  transform: scale(1.1) rotate(90deg);
+  background: #ff6b80;
+}
+
+.cardEmoji {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.cardHeader h1 {
+  font-size: 2.2rem;
+  margin: 0 0 10px;
+  font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+  letter-spacing: 2px;
+}
+
+.sparkles {
+  font-size: 1.5rem;
+  letter-spacing: 8px;
+}
+
+.cardContent {
+  padding: 20px 0;
+  color: #5a4a3a;
+}
+
+.cardTo {
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+
+.cardBody {
+  font-size: 1.4rem;
+  font-weight: 600;
+  font-style: italic;
+  font-family: 'Georgia', serif;
+  padding: 20px;
+  line-height: 1.6;
+  margin: 20px 0;
+}
+
+.details {
+  margin: 20px 0;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+}
+
+.venue, .date, .time {
+  padding: 5px 0;
+  font-size: 1rem;
+}
+
+.cardFrom {
+  margin-top: 25px;
+  color: #8a7a6a;
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.name {
+  display: block;
+  margin-top: 10px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-style: normal;
+  font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cake {
+    width: 160px;
+  }
+
+  .layer {
+    width: 100px;
+    height: 32px;
+  }
+
+  .layerMiddle {
+    width: 125px;
+    height: 36px;
+  }
+
+  .layerBottom {
+    width: 150px;
+    height: 40px;
+  }
+
+  .plate {
+    width: 180px;
+    height: 16px;
+  }
+
+  .candles {
+    gap: 20px;
+  }
+
+  .candle {
+    width: 6px;
+    height: 32px;
+  }
+
+  .card {
+    padding: 35px 25px;
+    max-width: 90vw;
+  }
+
+  .cardHeader h1 {
+    font-size: 1.8rem;
+  }
+
+  .cardBody {
+    font-size: 1.2rem;
+  }
+}
