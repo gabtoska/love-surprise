@@ -2,10 +2,10 @@
 export type PetType = 'penguin' | 'cat' | 'dog' | 'bird';
 
 // Theme types
-export type ThemeType = 'valentine' | 'birthday' | 'anniversary' | 'christmas' | 'proposal';
+export type ThemeType = 'valentine' | 'birthday' | 'anniversary' | 'christmas' | 'custom';
 
 // Gift types
-export type GiftType = 'letter' | 'flowers' | 'envelope' | 'cake' | 'ring';
+export type GiftType = 'letter' | 'flowers' | 'envelope' | 'cake' | 'ring' | 'puzzle';
 
 // Interaction messages
 export interface InteractionMessages {
@@ -36,6 +36,9 @@ export interface SurpriseConfig {
   gift: GiftType;
   messages: InteractionMessages;
   giftContent: GiftContent;
+  puzzleImage?: string; // base64 data URL for puzzle
+  puzzleGrid?: number; // 3, 4, or 5
+  customColors?: { primary: string }; // user-chosen color for custom theme
   createdAt?: Date;
 }
 

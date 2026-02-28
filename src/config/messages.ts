@@ -33,13 +33,13 @@ export const defaultMessages: Record<ThemeType, InteractionMessages> = {
     sadMessage: "Coal for you then! 😅",
     laughMessage: "Ho ho ho! 🎅",
   },
-  proposal: {
-    question: 'Will you spend forever with me? 💎',
-    yesButton: 'Yes, I will! 💍',
-    noButton: 'I need time...',
-    yesResponse: "You've made me the happiest! 💍✨\nForever starts now! 💕",
-    sadMessage: "My heart is breaking... 💔",
-    laughMessage: "Nervous giggles! 😅",
+  custom: {
+    question: 'Your question here',
+    yesButton: 'Yes!',
+    noButton: 'No',
+    yesResponse: 'Your response here',
+    sadMessage: 'Your sad message here',
+    laughMessage: 'Your laugh message here',
   },
 };
 
@@ -80,14 +80,14 @@ export const defaultGiftContent: Record<ThemeType, GiftContent> = {
     time: '5:00 PM',
     senderName: 'Santa\'s Helper',
   },
-  proposal: {
-    title: 'A Question',
-    recipientName: 'Love of My Life',
-    message: "Will you marry me?",
-    venue: 'Where It All Began',
-    date: 'The Beginning of Forever',
-    time: 'Sunset',
-    senderName: 'Yours Forever',
+  custom: {
+    title: 'Your Title',
+    recipientName: 'Name',
+    message: 'Write your message here...',
+    venue: '',
+    date: '',
+    time: '',
+    senderName: 'Your Name',
   },
 };
 

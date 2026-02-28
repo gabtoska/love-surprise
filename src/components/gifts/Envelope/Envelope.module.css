@@ -4,7 +4,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
   z-index: 300;
   display: flex;
   justify-content: center;
@@ -143,153 +144,167 @@
   border-left: 180px solid transparent;
   border-right: 180px solid transparent;
   border-top: 120px solid #d32f5e;
-  top: 0;
+  top: 20px;
   left: 0;
   transform-origin: top center;
   z-index: 5;
   filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.2));
 }
 
-/* Letter */
-.letter {
+/* Letter overlay – covers entire screen, centers the card */
+.letterOverlay {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 500;
+  inset: 0;
+  z-index: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 20px;
+}
+
+/* Letter card */
+.letter {
+  position: relative;
   width: 100%;
-  max-width: 650px;
-  max-height: 90vh;
+  max-width: 520px;
+  max-height: 85vh;
   overflow-y: auto;
-  padding: 50px 60px;
-  border-radius: 5px;
-  background: linear-gradient(180deg, #fffdf8 0%, #fff9f0 30%, #fff5ec 100%);
-  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35),
-              0 0 0 1px rgba(200, 170, 130, 0.3);
+  background: #fff;
+  border-radius: 20px;
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.22),
+    0 8px 24px rgba(0, 0, 0, 0.08);
+  scrollbar-width: thin;
+  scrollbar-color: #ddd transparent;
+}
+
+/* Top accent bar */
+.accentBar {
+  height: 5px;
+  border-radius: 20px 20px 0 0;
 }
 
 .closeButton {
   position: absolute;
-  top: 15px;
-  right: 20px;
-  background: #ff758c;
+  top: 16px;
+  right: 16px;
   color: white;
   border: none;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-size: 2rem;
+  width: 34px;
+  height: 34px;
+  font-size: 0.9rem;
+  font-weight: 600;
   line-height: 1;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(255, 117, 140, 0.5);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+  z-index: 2;
 }
 
 .closeButton:hover {
-  transform: scale(1.15) rotate(90deg);
-  box-shadow: 0 8px 25px rgba(255, 117, 140, 0.7);
-  background: #ff6b80;
+  transform: scale(1.12) rotate(90deg);
+  opacity: 0.9;
+}
+
+.headerIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  font-size: 1.7rem;
+  margin-bottom: 14px;
 }
 
 .letterHeader {
   text-align: center;
-  margin-bottom: 25px;
-  padding: 20px 0;
+  padding: 36px 40px 0;
 }
 
 .letterHeader h1 {
-  font-size: 2.6rem;
-  margin: 0;
-  font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
-  letter-spacing: 2px;
-  text-shadow: 0 2px 4px rgba(201, 24, 90, 0.1);
+  font-family: 'Georgia', 'Palatino Linotype', serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  margin: 0 0 8px;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
 }
 
 .hearts {
-  font-size: 1.8rem;
-  margin-top: 12px;
-  letter-spacing: 12px;
+  font-size: 0.85rem;
+  letter-spacing: 4px;
+  user-select: none;
 }
 
 .letterContent {
-  font-size: 1.1rem;
-  line-height: 2;
-  text-align: center;
-  padding: 20px 0;
-  color: #5a4a3a;
+  padding: 24px 36px 36px;
 }
 
 .letterTo {
+  font-family: 'Georgia', serif;
+  font-size: 1.05rem;
   font-weight: 600;
-  margin-bottom: 25px;
-  font-size: 1.3rem;
   font-style: italic;
-  letter-spacing: 1px;
+  margin: 0 0 16px;
 }
 
 .letterBody {
-  margin: 20px 0 25px;
-  font-style: italic;
-  font-size: 1.6rem;
-  font-weight: 600;
-  text-align: center;
-  font-family: 'Georgia', serif;
-  padding: 20px 15px;
-  line-height: 1.6;
-  border-radius: 8px;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-size: 0.95rem;
+  line-height: 1.85;
+  white-space: pre-wrap;
+  margin-bottom: 24px;
+  word-break: break-word;
 }
 
 .invitationDetails {
-  text-align: center;
-  margin: 25px 0;
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.venueName {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 18px;
-  font-family: 'Georgia', serif;
-  letter-spacing: 3px;
+  border: 1px solid;
+  border-radius: 14px;
+  padding: 16px 20px;
+  margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .detailLine {
-  padding: 8px 0;
-  font-size: 1.15rem;
-  color: #5a4a3a;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
 }
 
-.label {
-  color: #8a7a6a;
-  font-weight: 400;
-  margin-right: 8px;
-}
-
-.value {
-  font-weight: 700;
+.detailIcon {
+  font-size: 1rem;
+  flex-shrink: 0;
 }
 
 .letterFrom {
-  text-align: center;
-  margin-top: 25px;
-  color: #8a7a6a;
-  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.closing {
+  font-family: 'Georgia', serif;
+  font-size: 0.9rem;
   font-style: italic;
-  letter-spacing: 1px;
-  padding-top: 20px;
 }
 
 .name {
-  display: block;
-  margin-top: 12px;
-  font-size: 1.8rem;
-  font-weight: 600;
-  font-style: normal;
-  font-family: 'Brush Script MT', 'Lucida Handwriting', cursive;
+  font-family: 'Georgia', 'Palatino Linotype', serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: -0.01em;
 }
 
 .tapHint {
@@ -335,31 +350,43 @@
   }
 
   .letter {
-    padding: 30px 20px;
-    max-width: 95vw;
-    max-height: 85vh;
+    max-width: 96vw;
+    border-radius: 16px;
+  }
+
+  .letterHeader {
+    padding: 28px 24px 0;
+  }
+
+  .headerIcon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
   }
 
   .letterHeader h1 {
-    font-size: 1.8rem;
+    font-size: 1.35rem;
   }
 
-  .hearts {
-    font-size: 1.3rem;
-    letter-spacing: 5px;
+  .letterContent {
+    padding: 18px 24px 28px;
   }
 
   .letterBody {
-    font-size: 1.2rem;
-    padding: 15px 10px;
+    font-size: 0.9rem;
+    line-height: 1.75;
+  }
+
+  .name {
+    font-size: 1.3rem;
   }
 
   .closeButton {
-    width: 45px;
-    height: 45px;
-    font-size: 1.8rem;
-    top: 10px;
-    right: 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+    top: 12px;
+    right: 12px;
   }
 }
 
@@ -387,10 +414,10 @@
   }
 
   .letter {
-    padding: 25px 15px;
+    padding: 0;
   }
 
   .letterHeader h1 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }

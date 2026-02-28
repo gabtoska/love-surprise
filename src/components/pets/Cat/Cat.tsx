@@ -49,13 +49,13 @@ export default function Cat({
         <div className={styles.catHead}>
           {/* Eyes */}
           <div className={styles.catEyes}>
-            <motion.div 
+            <motion.div
               className={styles.eye}
               animate={
-                isSad 
-                  ? { scaleY: 0.5 } 
-                  : isLaughing 
-                  ? { scaleY: [1, 0.2, 1] }
+                isSad
+                  ? { scaleY: 0.5 }
+                  : isLaughing
+                  ? { scaleY: [1, 0.15, 1] }
                   : { scaleY: [1, 1, 0.1, 1] }
               }
               transition={{
@@ -64,15 +64,16 @@ export default function Cat({
                 times: isLaughing ? [0, 0.5, 1] : [0, 0.9, 0.95, 1],
               }}
             >
-              <div className={styles.pupil}></div>
+              <div className={styles.eyeShine}></div>
+              <div className={styles.eyeShineSmall}></div>
             </motion.div>
-            <motion.div 
+            <motion.div
               className={styles.eye}
               animate={
-                isSad 
-                  ? { scaleY: 0.5 } 
-                  : isLaughing 
-                  ? { scaleY: [1, 0.2, 1] }
+                isSad
+                  ? { scaleY: 0.5 }
+                  : isLaughing
+                  ? { scaleY: [1, 0.15, 1] }
                   : { scaleY: [1, 1, 0.1, 1] }
               }
               transition={{
@@ -81,62 +82,59 @@ export default function Cat({
                 times: isLaughing ? [0, 0.5, 1] : [0, 0.9, 0.95, 1],
               }}
             >
-              <div className={styles.pupil}></div>
+              <div className={styles.eyeShine}></div>
+              <div className={styles.eyeShineSmall}></div>
             </motion.div>
           </div>
 
           {/* Cheeks */}
           <div className={styles.cheeks}>
-            <div 
+            <div
               className={styles.cheek}
-              style={{ background: isSad ? '#a8d8ea' : '#ffb3ba' }}
+              style={{ background: isSad ? '#a8d8ea' : '#ffb3c6' }}
             ></div>
-            <div 
+            <div
               className={styles.cheek}
-              style={{ background: isSad ? '#a8d8ea' : '#ffb3ba' }}
+              style={{ background: isSad ? '#a8d8ea' : '#ffb3c6' }}
             ></div>
           </div>
 
           {/* Nose */}
           <div className={styles.nose}></div>
 
-          {/* Mouth */}
+          {/* Mouth - cute "w" shape */}
           <div className={styles.mouth}>
-            <div className={styles.mouthLine}></div>
-            <div className={styles.mouthLine}></div>
-          </div>
-
-          {/* Whiskers */}
-          <div className={styles.whiskers}>
-            <div className={styles.whiskerGroup}>
-              <div className={styles.whisker}></div>
-              <div className={styles.whisker}></div>
-              <div className={styles.whisker}></div>
-            </div>
-            <div className={styles.whiskerGroup}>
-              <div className={styles.whisker}></div>
-              <div className={styles.whisker}></div>
-              <div className={styles.whisker}></div>
-            </div>
+            <div className={styles.mouthCurve}></div>
+            <div className={styles.mouthCurve}></div>
           </div>
         </div>
 
         {/* Body */}
         <div className={styles.catBody}>
-          <div className={styles.bodyPattern}></div>
+          <div className={styles.belly}></div>
         </div>
 
-        {/* Paws */}
-        <div className={styles.paws}>
-          <div className={styles.paw}></div>
-          <div className={styles.paw}></div>
+        {/* Arms tucked into body */}
+        <div className={styles.arms}>
+          <div className={styles.armLeft}></div>
+          <div className={styles.armRight}></div>
+        </div>
+
+        {/* Feet */}
+        <div className={styles.feet}>
+          <div className={styles.foot}>
+            <div className={styles.pawPad}></div>
+          </div>
+          <div className={styles.foot}>
+            <div className={styles.pawPad}></div>
+          </div>
         </div>
 
         {/* Tail */}
         <motion.div
           className={styles.tail}
-          animate={{ rotate: isHappy ? [0, 30, 0, -30, 0] : [-10, 10, -10] }}
-          transition={{ duration: isHappy ? 0.5 : 2, repeat: Infinity }}
+          animate={{ rotate: isHappy ? [0, 25, 0, -25, 0] : [-8, 8, -8] }}
+          transition={{ duration: isHappy ? 0.5 : 2.5, repeat: Infinity }}
         ></motion.div>
 
         {/* Heart held */}

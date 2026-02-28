@@ -14,6 +14,17 @@
   font-size: 1.5rem;
   opacity: 0.3;
   animation: float 8s ease-in-out infinite;
+  will-change: transform, opacity;
+  filter: saturate(0.8);
+}
+
+.floatingEmoji:nth-child(odd) {
+  font-size: 1.2rem;
+}
+
+.floatingEmoji:nth-child(3n) {
+  font-size: 1.8rem;
+  opacity: 0.2;
 }
 
 @keyframes float {
@@ -22,10 +33,10 @@
     opacity: 0;
   }
   10% {
-    opacity: 0.3;
+    opacity: 0.28;
   }
   90% {
-    opacity: 0.3;
+    opacity: 0.28;
   }
   100% {
     transform: translateY(-10vh) rotate(360deg);

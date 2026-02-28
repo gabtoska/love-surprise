@@ -2,28 +2,38 @@
   border: none;
   border-radius: 50px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
+  letter-spacing: 1.2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-family: inherit;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Variants */
 .primary {
   background: linear-gradient(135deg, var(--color-secondary, #ff758c) 0%, var(--color-accent, #ff7eb3) 100%);
   color: white;
-  box-shadow: 0 4px 15px rgba(255, 117, 140, 0.4);
+  box-shadow:
+    0 4px 14px rgba(255, 117, 140, 0.35),
+    0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .primary:hover {
-  box-shadow: 0 6px 20px rgba(255, 117, 140, 0.6);
+  box-shadow:
+    0 8px 28px rgba(255, 117, 140, 0.5),
+    0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .secondary {
-  background: linear-gradient(135deg, #c9d6df 0%, #e2e8ed 100%);
+  background: linear-gradient(135deg, #d1dce5 0%, #e8edf2 100%);
   color: #6b7c8a;
-  box-shadow: 0 4px 15px rgba(201, 214, 223, 0.4);
+  box-shadow: 0 3px 12px rgba(201, 214, 223, 0.4);
+}
+
+.secondary:hover {
+  box-shadow: 0 5px 18px rgba(201, 214, 223, 0.55);
 }
 
 .ghost {
@@ -39,17 +49,17 @@
 
 /* Sizes */
 .small {
-  padding: 0.4rem 1rem;
-  font-size: 0.75rem;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.74rem;
 }
 
 .medium {
-  padding: 0.6rem 1.5rem;
-  font-size: 0.9rem;
+  padding: 0.65rem 1.6rem;
+  font-size: 0.88rem;
 }
 
 .large {
-  padding: 0.8rem 2rem;
+  padding: 0.85rem 2.2rem;
   font-size: 1rem;
 }
 

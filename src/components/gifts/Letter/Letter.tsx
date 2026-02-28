@@ -15,82 +15,141 @@ interface LetterProps {
 export default function Letter({ content, colors, show, onClose }: LetterProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = () => {
-    setIsOpen(true);
-  };
+  const handleClick = () => setIsOpen(true);
+  const handleClose = () => { setIsOpen(false); onClose(); };
 
-  const handleClose = () => {
-    setIsOpen(false);
-    onClose();
-  };
+  const hasDetails = content.venue || content.date || content.time;
 
   return (
     <AnimatePresence>
       {show && (
         <motion.div
-          className={styles.container}
+          className={styles.overlay}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          onClick={(e) => { if (e.target === e.currentTarget && isOpen) handleClose(); }}
         >
           {!isOpen ? (
+            /* ── Closed sealed envelope ── */
             <motion.div
-              className={styles.letterWrapper}
+              className={styles.envelopeScene}
               onClick={handleClick}
-              animate={{ y: [-5, 5, -5], rotate: [-1, 1, -1] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              whileHover={{ scale: 1.05 }}
+              animate={{ y: [-4, 4, -4] }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.97 }}
             >
-              <div className={styles.letter} style={{ borderColor: colors.primary }}>
-                <div className={styles.seal} style={{ background: colors.primary }}>
-                  💌
+              <div className={styles.envelope} style={{ '--c-primary': colors.primary, '--c-secondary': colors.secondary } as React.CSSProperties}>
+                {/* Main envelope body */}
+                <div className={styles.envelopeBody} />
+                {/* Bottom stripe decoration */}
+                <div className={styles.envelopeStripe} />
+                {/* Flap folded DOWN (closed) */}
+                <div className={styles.flap} />
+                {/* Inner shadow where flap meets body */}
+                <div className={styles.flapShadow} />
+                {/* Wax seal on top of the flap */}
+                <div className={styles.waxSeal} style={{ background: colors.primary, boxShadow: `0 4px 18px ${colors.primary}55` }}>
+                  <span className={styles.sealIcon}>♥</span>
                 </div>
-                <div className={styles.lines}>
-                  <div className={styles.line} style={{ background: `${colors.primary}40` }}></div>
-                  <div className={styles.line} style={{ background: `${colors.primary}30` }}></div>
-                  <div className={styles.line} style={{ background: `${colors.primary}20` }}></div>
-                </div>
-                <div className={styles.heart} style={{ color: colors.primary }}>♥</div>
               </div>
-              <div className={styles.tapHint}>Tap to read 💌</div>
+              <motion.p
+                className={styles.tapHint}
+                animate={{ opacity: [0.5, 1, 0.5] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                Tap to open 💌
+              </motion.p>
             </motion.div>
           ) : (
+            /* ── Opened letter card ── */
             <motion.div
-              className={styles.card}
-              initial={{ scale: 0.3, opacity: 0, rotateY: -90 }}
-              animate={{ scale: 1, opacity: 1, rotateY: 0 }}
-              exit={{ scale: 0.3, opacity: 0 }}
-              transition={{ duration: 0.6, ease: [0.68, -0.55, 0.265, 1.55] }}
+              className={styles.cardWrap}
+              initial={{ scale: 0.4, opacity: 0, y: 60 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.4, opacity: 0, y: 40 }}
+              transition={{ type: 'spring', damping: 22, stiffness: 260 }}
             >
-              <button className={styles.closeButton} onClick={handleClose} style={{ background: colors.primary }}>×</button>
-              
-              <div className={styles.cardEmoji}>💌</div>
-              
-              <div className={styles.cardHeader}>
-                <h1 style={{ color: colors.primary }}>{content.title}</h1>
-                <div className={styles.hearts} style={{ color: colors.primary }}>♥ ♥ ♥</div>
-              </div>
+              <div className={styles.card}>
+                {/* Close button */}
+                <button
+                  className={styles.closeBtn}
+                  onClick={handleClose}
+                  style={{ background: colors.primary }}
+                >
+                  ✕
+                </button>
 
-              <div className={styles.cardContent}>
-                <div className={styles.cardTo} style={{ color: colors.primary }}>
-                  Dearest {content.recipientName},
-                </div>
+                {/* Top accent bar */}
+                <div className={styles.accentBar} style={{ background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary || colors.accent})` }} />
 
-                <div className={styles.cardBody} style={{ color: colors.text }}>
-                  {content.message}
-                </div>
-
-                {(content.venue || content.date || content.time) && (
-                  <div className={styles.details} style={{ borderColor: `${colors.primary}30` }}>
-                    {content.venue && <div className={styles.venue} style={{ color: colors.primary }}>📍 {content.venue}</div>}
-                    {content.date && <div className={styles.date}>📅 {content.date}</div>}
-                    {content.time && <div className={styles.time}>⏰ {content.time}</div>}
+                {/* Header area */}
+                <header className={styles.header}>
+                  <motion.div
+                    className={styles.headerIcon}
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.25, type: 'spring', stiffness: 400, damping: 12 }}
+                    style={{ background: `${colors.primary}14`, color: colors.primary }}
+                  >
+                    💌
+                  </motion.div>
+                  <h1 className={styles.title} style={{ color: colors.primary }}>
+                    {content.title}
+                  </h1>
+                  <div className={styles.ornament} style={{ color: `${colors.primary}50` }}>
+                    ─── ✦ ───
                   </div>
-                )}
+                </header>
 
-                <div className={styles.cardFrom}>
-                  With all my love,
-                  <span className={styles.name} style={{ color: colors.primary }}>{content.senderName} 💕</span>
+                {/* Body */}
+                <div className={styles.body}>
+                  <p className={styles.greeting} style={{ color: colors.primary }}>
+                    Dear {content.recipientName},
+                  </p>
+
+                  <div className={styles.message} style={{ color: colors.text }}>
+                    {content.message}
+                  </div>
+
+                  {/* Details card */}
+                  {hasDetails && (
+                    <motion.div
+                      className={styles.details}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.35 }}
+                      style={{ background: `${colors.primary}08`, borderColor: `${colors.primary}20` }}
+                    >
+                      {content.venue && (
+                        <div className={styles.detailRow}>
+                          <span className={styles.detailIcon}>📍</span>
+                          <span style={{ color: colors.text }}>{content.venue}</span>
+                        </div>
+                      )}
+                      {content.date && (
+                        <div className={styles.detailRow}>
+                          <span className={styles.detailIcon}>📅</span>
+                          <span style={{ color: colors.text }}>{content.date}</span>
+                        </div>
+                      )}
+                      {content.time && (
+                        <div className={styles.detailRow}>
+                          <span className={styles.detailIcon}>🕐</span>
+                          <span style={{ color: colors.text }}>{content.time}</span>
+                        </div>
+                      )}
+                    </motion.div>
+                  )}
+
+                  {/* Sign-off */}
+                  <div className={styles.signoff}>
+                    <span className={styles.closing} style={{ color: colors.textLight }}>With love,</span>
+                    <span className={styles.sender} style={{ color: colors.primary }}>
+                      {content.senderName}
+                    </span>
+                  </div>
                 </div>
               </div>
             </motion.div>

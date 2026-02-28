@@ -26,6 +26,11 @@ export const gifts: Record<GiftType, GiftConfig> = {
     emoji: '💍',
     description: 'A precious ring in a velvet box',
   },
+  puzzle: {
+    name: 'Photo Puzzle',
+    emoji: '🧩',
+    description: 'Upload a photo that becomes a puzzle',
+  },
 };
 
 export const getGift = (giftType: GiftType): GiftConfig => {

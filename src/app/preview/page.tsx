@@ -5,7 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 import styles from './preview.module.css';
 import { SurpriseConfig } from '@/types';
-import { themes, getDefaultMessages, getDefaultGiftContent } from '@/config';
+import { themes, getDefaultMessages, getDefaultGiftContent, buildCustomTheme } from '@/config';
 import Pet from '@/components/pets';
 import Gift from '@/components/gifts';
 import { FloatingEmojis, Confetti, Button } from '@/components/ui';
@@ -27,6 +27,14 @@ function PreviewContent() {
       try {
         const data = decodeURIComponent(rawData);
         const decoded = JSON.parse(decodeURIComponent(escape(atob(data)))) as SurpriseConfig;
+        // Read puzzle image from hash fragment (kept out of query to avoid URL length limits)
+        if (typeof window !== 'undefined' && window.location.hash) {
+          const hash = window.location.hash.substring(1); // remove #
+          const imgMatch = hash.match(/^img=(.+)$/);
+          if (imgMatch) {
+            decoded.puzzleImage = decodeURIComponent(imgMatch[1]);
+          }
+        }
         setConfig(decoded);
       } catch {
         // Use default config if decoding fails
@@ -63,7 +71,10 @@ function PreviewContent() {
     );
   }
 
-  const currentTheme = themes[config.theme];
+  const currentTheme =
+    config.theme === 'custom' && config.customColors
+      ? buildCustomTheme(config.customColors.primary)
+      : themes[config.theme];
 
   const handleYes = () => {
     setAnswered(true);
@@ -217,6 +228,8 @@ function PreviewContent() {
         colors={currentTheme.colors}
         show={showGift}
         onClose={handleGiftClose}
+        puzzleImage={config.puzzleImage}
+        puzzleGrid={config.puzzleGrid}
       />
     </main>
   );

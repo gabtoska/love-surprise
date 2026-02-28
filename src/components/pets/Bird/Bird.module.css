@@ -2,6 +2,7 @@
   margin-bottom: 2rem;
   position: relative;
   cursor: pointer;
+  filter: drop-shadow(0 18px 30px rgba(41, 128, 185, 0.35));
 }
 
 .bird {
@@ -25,8 +26,9 @@
 .feather {
   width: 8px;
   height: 25px;
-  background: linear-gradient(to top, #ffcc00, #ff9900);
+  background: radial-gradient(ellipse at 40% 25%, #ffe066, #ffcc00 50%, #e68a00);
   border-radius: 5px 5px 3px 3px;
+  box-shadow: inset -1px -2px 4px rgba(0,0,0,0.18), 0 3px 6px rgba(230,138,0,0.35);
 }
 
 .feather:first-child {
@@ -43,13 +45,18 @@
 .birdHead {
   width: 100px;
   height: 90px;
-  background: linear-gradient(135deg, #87ceeb 0%, #5dade2 50%, #87ceeb 100%);
+  background: radial-gradient(ellipse at 35% 28%, #c8eeff 0%, #87ceeb 35%, #4a9ec7 70%, #2176ae 100%);
   border-radius: 50%;
   position: absolute;
   top: 15px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
+  box-shadow:
+    inset -5px -7px 14px rgba(0, 0, 0, 0.18),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.50),
+    0 8px 22px rgba(33, 118, 174, 0.35),
+    0 3px 8px rgba(0, 0, 0, 0.12);
 }
 
 /* Eyes */
@@ -65,19 +72,31 @@
 .eye {
   width: 22px;
   height: 24px;
-  background: #1a1a2e;
+  background: radial-gradient(circle at 45% 40%, #3d3d5c, #1a1a2e);
   border-radius: 50%;
   position: relative;
+  box-shadow: inset 0 3px 8px rgba(0,0,0,0.5), 0 2px 5px rgba(0,0,0,0.3);
 }
 
 .eyeShine {
   width: 7px;
   height: 9px;
-  background: #ffffff;
+  background: radial-gradient(circle, #ffffff, rgba(255,255,255,0.5));
   border-radius: 50%;
   position: absolute;
-  top: 4px;
+  top: 3px;
   left: 4px;
+}
+
+.eye::after {
+  content: '';
+  width: 4px;
+  height: 4px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
 }
 
 /* Cheeks */
@@ -109,17 +128,18 @@
 .beakTop {
   width: 20px;
   height: 12px;
-  background: linear-gradient(to bottom, #ffa500, #ff8c00);
+  background: radial-gradient(ellipse at 40% 30%, #ffcc66, #ffa500 50%, #cc6600);
   border-radius: 50% 50% 0 0;
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   position: relative;
   z-index: 1;
+  filter: drop-shadow(0 2px 3px rgba(180,80,0,0.4));
 }
 
 .beakBottom {
   width: 16px;
   height: 8px;
-  background: linear-gradient(to bottom, #ff8c00, #ff7700);
+  background: radial-gradient(ellipse at 40% 30%, #ffaa44, #ff8c00 60%, #cc5500);
   border-radius: 0 0 50% 50%;
   margin: -2px auto 0;
 }
@@ -128,35 +148,44 @@
 .birdBody {
   width: 90px;
   height: 100px;
-  background: linear-gradient(135deg, #87ceeb 0%, #5dade2 50%, #87ceeb 100%);
+  background: radial-gradient(ellipse at 35% 25%, #c8eeff 0%, #87ceeb 40%, #4a9ec7 75%, #2176ae 100%);
   border-radius: 45px 45px 40px 40px;
   position: absolute;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1;
+  box-shadow:
+    inset -5px -8px 16px rgba(0, 0, 0, 0.18),
+    inset 4px 4px 10px rgba(255, 255, 255, 0.45),
+    0 10px 25px rgba(33, 118, 174, 0.30);
 }
 
 .belly {
   width: 60px;
   height: 70px;
-  background: linear-gradient(to bottom, #fff8f0 0%, #ffe8d0 100%);
+  background: radial-gradient(ellipse at 45% 30%, #ffffff 0%, #fff8f0 45%, #ffd8b0 100%);
   border-radius: 30px 30px 28px 28px;
   position: absolute;
   bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
+  box-shadow: inset -3px -4px 10px rgba(0,0,0,0.08), inset 2px 2px 6px rgba(255,255,255,0.6);
 }
 
 /* Wings */
 .wing {
   width: 40px;
   height: 60px;
-  background: linear-gradient(135deg, #5dade2 0%, #3498db 100%);
+  background: radial-gradient(ellipse at 35% 25%, #8dd4f0, #5dade2 50%, #1a7ab5);
   border-radius: 20px 20px 30px 30px;
   position: absolute;
   top: 90px;
   z-index: 0;
+  box-shadow:
+    inset -3px -5px 10px rgba(0,0,0,0.20),
+    inset 2px 2px 6px rgba(255,255,255,0.35),
+    0 5px 12px rgba(26, 122, 181, 0.30);
 }
 
 .wingLeft {
@@ -187,8 +216,9 @@
 .toe {
   width: 6px;
   height: 18px;
-  background: #ffa500;
+  background: radial-gradient(ellipse at 40% 20%, #ffcc66, #ffa500 60%, #cc6600);
   border-radius: 3px;
+  box-shadow: 1px 2px 4px rgba(0,0,0,0.2);
 }
 
 .foot:first-child .toe:first-child {
@@ -221,9 +251,10 @@
 .tailFeather {
   width: 12px;
   height: 30px;
-  background: linear-gradient(to bottom, #5dade2, #3498db);
+  background: radial-gradient(ellipse at 40% 20%, #8dd4f0, #5dade2 50%, #1a7ab5);
   border-radius: 6px 6px 10px 10px;
   transform-origin: top center;
+  box-shadow: inset -2px -3px 6px rgba(0,0,0,0.18), 0 3px 8px rgba(26,122,181,0.25);
 }
 
 .tailFeather:first-child {

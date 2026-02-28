@@ -6,6 +6,7 @@ import Flowers from './Flowers/Flowers';
 import Cake from './Cake/Cake';
 import RingBox from './RingBox/RingBox';
 import Letter from './Letter/Letter';
+import Puzzle from './Puzzle/Puzzle';
 
 interface GiftProps {
   type: GiftType;
@@ -13,9 +14,11 @@ interface GiftProps {
   colors: ThemeColors;
   show: boolean;
   onClose: () => void;
+  puzzleImage?: string;
+  puzzleGrid?: number;
 }
 
-export default function Gift({ type, content, colors, show, onClose }: GiftProps) {
+export default function Gift({ type, content, colors, show, onClose, puzzleImage, puzzleGrid }: GiftProps) {
   const commonProps = {
     content,
     colors,
@@ -32,10 +35,12 @@ export default function Gift({ type, content, colors, show, onClose }: GiftProps
       return <RingBox {...commonProps} />;
     case 'letter':
       return <Letter {...commonProps} />;
+    case 'puzzle':
+      return <Puzzle {...commonProps} image={puzzleImage || ''} grid={puzzleGrid || 4} />;
     case 'envelope':
     default:
       return <Envelope {...commonProps} />;
   }
 }
 
-export { Envelope, Flowers, Cake, RingBox, Letter };
+export { Envelope, Flowers, Cake, RingBox, Letter, Puzzle };

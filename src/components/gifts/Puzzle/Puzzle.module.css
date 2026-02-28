@@ -1,0 +1,314 @@
+/* Overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+/* Modal card */
+.modal {
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 28px;
+  padding: 28px 24px 24px;
+  max-width: 480px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.12),
+    0 30px 80px rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  max-height: 96vh;
+  overflow-y: auto;
+}
+
+/* Header */
+.header {
+  width: 100%;
+}
+
+.headerTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.headerTop h2 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #2d2d3a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.3px;
+}
+
+.headerIcon {
+  font-size: 1.5rem;
+}
+
+.stats {
+  display: flex;
+  gap: 8px;
+}
+
+.statBadge {
+  background: #f0f0f5;
+  color: #5a5a72;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* Progress bar */
+.progressTrack {
+  width: 100%;
+  height: 6px;
+  background: #eeeef2;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 3px;
+  will-change: width;
+}
+
+/* Board */
+.boardWrapper {
+  position: relative;
+}
+
+.board {
+  position: relative;
+  background: #f4f4f8;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    inset 0 2px 8px rgba(0, 0, 0, 0.06),
+    0 2px 12px rgba(0, 0, 0, 0.08);
+  touch-action: none;
+  user-select: none;
+}
+
+.board.solved {
+  box-shadow:
+    0 0 0 4px rgba(76, 175, 80, 0.3),
+    0 4px 24px rgba(76, 175, 80, 0.15);
+}
+
+/* Puzzle piece */
+.piece {
+  position: absolute;
+  border-radius: 10px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  box-shadow:
+    0 1px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border: 2px solid transparent;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  will-change: transform;
+}
+
+.piece:hover {
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.pieceSelected {
+  border-color: currentColor;
+  box-shadow:
+    0 0 0 3px rgba(255, 120, 160, 0.35),
+    0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 20 !important;
+}
+
+.pieceCorrect {
+  cursor: default;
+  border-radius: 4px;
+  border-color: transparent;
+  box-shadow: none;
+  opacity: 1;
+}
+
+.pieceCorrect:hover {
+  box-shadow: none;
+}
+
+.pieceFlash {
+  animation: flashGreen 0.6s ease;
+}
+
+@keyframes flashGreen {
+  0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.6); }
+  50% { box-shadow: 0 0 0 8px rgba(76, 175, 80, 0.2); }
+  100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+}
+
+/* Solved overlay */
+.solvedOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(1px);
+  border-radius: 18px;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.solvedEmoji {
+  font-size: 4rem;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+  animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+@keyframes popIn {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+/* Hint */
+.hint {
+  color: #9898aa;
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.2px;
+}
+
+/* Message card */
+.messageCard {
+  background: linear-gradient(135deg, #fafafa 0%, #fff 100%);
+  border-radius: 20px;
+  padding: 24px 28px;
+  text-align: center;
+  width: 100%;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.04),
+    0 8px 32px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+}
+
+.messageCard h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-weight: 800;
+  letter-spacing: -0.2px;
+}
+
+.messageText {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #4a4a5e;
+  margin-bottom: 6px;
+}
+
+.messageDetails {
+  font-size: 0.88rem;
+  color: #7a7a8e;
+  margin-bottom: 4px;
+}
+
+.sender {
+  font-style: italic;
+  color: #9a9aae;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.closeBtn {
+  border: none;
+  color: white;
+  padding: 12px 36px;
+  border-radius: 50px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.footerLabel {
+  color: #b0b0c0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .modal {
+    padding: 22px 18px 20px;
+    border-radius: 22px;
+    gap: 14px;
+  }
+
+  .headerTop h2 {
+    font-size: 1.15rem;
+  }
+
+  .statBadge {
+    padding: 4px 10px;
+    font-size: 0.72rem;
+  }
+
+  .board {
+    border-radius: 14px;
+  }
+
+  .piece {
+    border-radius: 7px;
+  }
+
+  .messageCard {
+    padding: 20px 22px;
+  }
+
+  .messageCard h3 {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .modal {
+    padding: 18px 14px 16px;
+    gap: 12px;
+  }
+
+  .headerTop {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .piece {
+    border-radius: 5px;
+  }
+}

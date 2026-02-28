@@ -127,7 +127,7 @@ export default function Dog({
         <motion.div
           className={styles.tail}
           animate={{ 
-            rotate: isHappy ? [-30, 30, -30] : [-15, 15, -15] 
+            rotate: isHappy ? [-25, 25, -25] : [-12, 12, -12] 
           }}
           transition={{ 
             duration: isHappy ? 0.2 : 0.5, 
