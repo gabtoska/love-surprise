@@ -471,6 +471,21 @@ export default function Home() {
 
                 <h3 style={{ color: currentTheme.colors.primary }}>Gift Card Details</h3>
 
+                <div className={styles.formGroup}>
+                  <label style={{ color: currentTheme.colors.text }}>Title</label>
+                  <input
+                    type="text"
+                    value={config.giftContent.title}
+                    onChange={(e) =>
+                      setConfig({
+                        ...config,
+                        giftContent: { ...config.giftContent, title: e.target.value },
+                      })
+                    }
+                    style={{ borderColor: currentTheme.colors.primary }}
+                  />
+                </div>
+
                 <div className={styles.formRow}>
                   <div className={styles.formGroup}>
                     <label style={{ color: currentTheme.colors.text }}>Recipient Name</label>
