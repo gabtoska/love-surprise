@@ -52,6 +52,12 @@ export default function Home() {
     return base;
   };
 
+  const handlePreviewClick = () => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('isCreator', 'true');
+    }
+  };
+
   const copyLink = async () => {
     const link = `${window.location.origin}${generatePreviewLink()}`;
     await navigator.clipboard.writeText(link);
@@ -580,7 +586,7 @@ export default function Home() {
             </Button>
           ) : (
             <div className={styles.finalButtons}>
-              <Link href={generatePreviewLink()}>
+              <Link href={generatePreviewLink()} onClick={handlePreviewClick}>
                 <Button
                   variant="primary"
                   style={{

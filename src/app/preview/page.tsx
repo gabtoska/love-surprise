@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import styles from './preview.module.css';
 import { SurpriseConfig } from '@/types';
@@ -12,6 +12,7 @@ import { FloatingEmojis, Confetti, Button } from '@/components/ui';
 
 function PreviewContent() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const [config, setConfig] = useState<SurpriseConfig | null>(null);
   const [showConfetti, setShowConfetti] = useState(false);
   const [showGift, setShowGift] = useState(false);
@@ -20,6 +21,15 @@ function PreviewContent() {
   const [showSadMessage, setShowSadMessage] = useState(false);
   const [showLaughMessage, setShowLaughMessage] = useState(false);
   const [noButtonStyle, setNoButtonStyle] = useState<React.CSSProperties>({});
+  const [copied, setCopied] = useState(false);
+  const [isCreator, setIsCreator] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const creator = sessionStorage.getItem('isCreator') === 'true';
+      setIsCreator(creator);
+    }
+  }, []);
 
   useEffect(() => {
     const rawData = searchParams.get('data');
@@ -117,6 +127,18 @@ function PreviewContent() {
 
   const handleGiftClose = () => {
     setShowGift(false);
+  };
+
+  const handleCopyLink = () => {
+    if (typeof window !== 'undefined') {
+      navigator.clipboard.writeText(window.location.href);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
+  const handleGoBack = () => {
+    router.back();
   };
 
   return (
@@ -231,6 +253,29 @@ function PreviewContent() {
         puzzleImage={config.puzzleImage}
         puzzleGrid={config.puzzleGrid}
       />
+
+      {/* Preview Controls - Only visible to the creator */}
+      {isCreator && (
+        <div className={styles.previewControls}>
+          <Button
+            variant="secondary"
+            size="medium"
+            onClick={handleCopyLink}
+            style={{
+              background: copied ? currentTheme.colors.secondary : undefined,
+            }}
+          >
+            {copied ? '✓ Link Copied!' : '📋 Copy Link'}
+          </Button>
+          <Button
+            variant="ghost"
+            size="medium"
+            onClick={handleGoBack}
+          >
+            ↻ Restart
+          </Button>
+        </div>
+      )}
     </main>
   );
 }
